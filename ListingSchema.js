@@ -5,7 +5,6 @@ var listingSchema = new Schema({
   code:{
     type: String,
     required: true,
-    unique: true,
   },
   name:{
     type: String,
@@ -16,19 +15,28 @@ var listingSchema = new Schema({
     longitude: Number,
   },
   address: String,
-  created_at: Date,
   updated_at: Date,
+  created_at: Date
 });
 
 
 listingSchema.pre('save', function(next) {
-  if(!this.created_at || !this.updated_at){ 
-    this.created_at = this.updated_at = Date.now();
-  }
-  else{
-    this.updated_at = Date.now();
-  }
+
+  var currentDate = new Date();
+
+  this.updated_at = currentDate;
+  if(!this.created_at)
+    this.created_at = currentDate;
+
+    if(typeof code!= String){
+      throw err;
+    }
+    else if(typeof name!= String){
+      throw err;
+    }
+    else
   next();
 });
+
 var Listing = mongoose.model('Listing', listingSchema);
 module.exports = Listing;
