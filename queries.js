@@ -1,15 +1,31 @@
 /* Add all the required libraries*/
-
+var fs = require('fs'),
+    mongoose = require('mongoose'), 
+    Listing = require('./ListingSchema.js'), 
+    config = require('./config');
 /* Connect to your database using mongoose - remember to keep your key secret*/
 
 /* Fill out these functions using Mongoose queries*/
 //Check out - https://mongoosejs.com/docs/queries.html
+
+mongoose.connect('mongodb+srv://duharter:Julito90@@cluster0-kds1v.mongodb.net/test?retryWrites=true&w=majority',{
+useNewUrlParser: true,
+useFindAndModify: false,
+useCreateIndex: true,
+useUnifiedTopology: true
+});
 
 var findLibraryWest = function() {
   /* 
     Find the document that contains data corresponding to Library West,
     then log it to the console. 
    */
+   Listing.find({name: "Library West"}, function(err,obj){
+   if(err)
+   throw err;
+   else
+   console.log(obj);
+});
 };
 var removeCable = function() {
   /*
@@ -28,6 +44,12 @@ var retrieveAllListings = function() {
   /* 
     Retrieve all listings in the database, and log them to the console. 
    */
+  Listing.find({}, function(err,lists){
+    if(err)
+    console.error(err);
+    else
+    console.log(users);
+  })
 };
 
 findLibraryWest();
