@@ -15,44 +15,44 @@ useCreateIndex: true,
 useUnifiedTopology: true
 });
 
-var err, data, listingData, entries;
+var err, data, listingData, listEntries;
 
-entries = listingData.entries;
+listlistEntries = listingData.listEntries;
 
-function sendData(){
-  for (var i = 0; i < entries.length; i++) {
-    if (entries[i].coordinates && entries[i].address) {
+function sendToDB(){
+  for (var i = 0; i < listEntries.length; i++) {
+    if (listlistEntries[i].coordinates && listlistEntries[i].address) {
       var newEntry = new Listing({
-        code: entries[i].code,
-        name: entries[i].name,
+        code: listEntries[i].code,
+        name: listEntries[i].name,
         coordinates: {
-          latitude: entries[i].coordinates.latitude,
-          longitude: entries[i].coordinates.longitude
+          latitude: listEntries[i].coordinates.latitude,
+          longitude: listEntries[i].coordinates.longitude
         },
-        address: entries[i].address
+        address: listEntries[i].address
       });
     }
-    else if (entries[i].coordinates) {
+    else if (listEntries[i].coordinates) {
       var newEntry = new Listing({
-        code: entries[i].code,
-        name: entries[i].name,
+        code: listEntries[i].code,
+        name: listEntries[i].name,
         coordinates: {
-          latitude: entries[i].coordinates.latitude,
-          longitude: entries[i].coordinates.longitude
+          latitude: listEntries[i].coordinates.latitude,
+          longitude: listEntries[i].coordinates.longitude
         }
       });
     }
-    else if (entries[i].address) {
+    else if (listEntries[i].address) {
       var newEntry = new Listing({
-        code: entries[i].code,
-        name: entries[i].name,
-        address: entries[i].address
+        code: listEntries[i].code,
+        name: listEntries[i].name,
+        address: listEntries[i].address
       });
     }
     else {
       var newEntry = new Listing({
-        code: entries[i].code,
-        name: entries[i].name
+        code: listEntries[i].code,
+        name: listEntries[i].name
       })
     }
     newEntry.save();
@@ -60,4 +60,4 @@ function sendData(){
   console.log('Finished');
 };
 
-sendData();
+sendToDB();
