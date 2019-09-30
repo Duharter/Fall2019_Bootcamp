@@ -15,44 +15,44 @@ useCreateIndex: true,
 useUnifiedTopology: true
 });
 
-var err, data, listingData, listEntries;
+var err, data, listingData, entries;
 
-listlistEntries = listingData.listEntries;
+entries = listingData.entries;
 
 function sendToDB(){
-  for (var i = 0; i < listEntries.length; i++) {
-    if (listlistEntries[i].coordinates && listlistEntries[i].address) {
+  for (var i = 0; i < entries.length; i++) {
+    if (entries[i].coordinates && entries[i].address) {
       var newEntry = new Listing({
-        code: listEntries[i].code,
-        name: listEntries[i].name,
+        code: entries[i].code,
+        name: entries[i].name,
         coordinates: {
-          latitude: listEntries[i].coordinates.latitude,
-          longitude: listEntries[i].coordinates.longitude
+          latitude: entries[i].coordinates.latitude,
+          longitude: entries[i].coordinates.longitude
         },
-        address: listEntries[i].address
+        address: entries[i].address
       });
     }
-    else if (listEntries[i].coordinates) {
+    else if (entries[i].coordinates) {
       var newEntry = new Listing({
-        code: listEntries[i].code,
-        name: listEntries[i].name,
+        code: entries[i].code,
+        name: entries[i].name,
         coordinates: {
-          latitude: listEntries[i].coordinates.latitude,
-          longitude: listEntries[i].coordinates.longitude
+          latitude: entries[i].coordinates.latitude,
+          longitude: entries[i].coordinates.longitude
         }
       });
     }
-    else if (listEntries[i].address) {
+    else if (entries[i].address) {
       var newEntry = new Listing({
-        code: listEntries[i].code,
-        name: listEntries[i].name,
-        address: listEntries[i].address
+        code: entries[i].code,
+        name: entries[i].name,
+        address: entries[i].address
       });
     }
     else {
       var newEntry = new Listing({
-        code: listEntries[i].code,
-        name: listEntries[i].name
+        code: entries[i].code,
+        name: entries[i].name
       })
     }
     newEntry.save();

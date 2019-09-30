@@ -27,6 +27,7 @@ var removeCable = function () {
     console.log(obj);
   });
 };
+<<<<<<< HEAD
 var updatePhelpsMemorial = function () {
 
   Listing.findOneAndUpdate({ name: "Phelps Laboratory"}, {address: "100 Phelps Lab P.O. Box 116350 Gainesville, FL  32611"}, {'new': true}, function(err,obj){
@@ -34,6 +35,16 @@ var updatePhelpsMemorial = function () {
     else
     console.log(obj);
   });
+=======
+var updatePhelpsLab = function() {
+  /*
+    Phelps Lab address is incorrect. Find the listing, update it, and then 
+    log the updated document to the console. 
+    
+    Correct Address: 1953 Museum Rd, Gainesville, FL 32603
+
+   */
+>>>>>>> 9b0b5dc4c90aee42721e4a665df55d2b5df222a8
 };
 var retrieveAllListings = function () {
 
